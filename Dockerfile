@@ -15,7 +15,7 @@ RUN apt-get install nodejs -y
 RUN node -v && npm -v
 
 # Clone the repository
-RUN git clone https://github.com/bazzofx/trend-report-permissions /app
+RUN git clone https://github.com/bazzofx/trend-report-permissions.git /app
 
 # Set working directory
 WORKDIR /app
@@ -23,8 +23,10 @@ WORKDIR /app
 # Install npm dependencies
 RUN npm install  2>/dev/null
 
+# Create .env.local file with API_KEY
+
 # Expose necessary ports
 EXPOSE 80 443 3000
 
 # Define startup script to start both Nginx and the app
-CMD service npm run production
+CMD npm run production
